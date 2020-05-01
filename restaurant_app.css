@@ -9,6 +9,14 @@
 	text-align: center;
 }
 
+.wrapper {
+	color :black;
+}
+
+.sidebar {
+	color:blue;
+}
+
 h1 {
 	color: brown;
 }
