@@ -1,0 +1,303 @@
+WindowManager:
+	LoginWindow:
+	CreateAccountWindow:
+	SecondWindow:
+	Lunch_Menu:
+	Dinner_Menu:
+
+<DragLabel>:
+    drag_rectangle: self.x, self.y, self.width, self.height
+    drag_timeout: 10000000
+    drag_distance: 0
+
+<LoginWindow>:
+	name: "login"
+
+	email:email
+	password:password
+
+	FloatLayout:
+
+		Label:
+			text: "Email: "
+			pos_hint: {"x":0.1, "top":0.9}
+			size_hint: 0.4, 0.15
+
+		TextInput:
+			id: email
+			multiline: False
+			pos_hint: {"x": 0.45, "top":0.9}
+			size_hint: 0.4, 0.15
+
+		Label:
+			text: "Password: "
+			pos_hint: {"x": 0.1, "top": 0.7}
+			size_hint:0.35, 0.15
+
+		TextInput:
+			id: password
+			password: True #Hides password as entering
+			pos_hint: {"x": 0.45, "top":0.7}
+			size_hint: 0.4, 0.15
+			multiline: False
+
+	Button:
+		text: "Login"
+		pos_hint: {"x": 0.2, "y": 0.3}
+		size_hint: 0.6, 0.2
+		on_release: 
+			root.verify_credentials() if password.text == "password" and email.text == "username" else "login"
+			root.manager.transition.direction = "left"
+
+	Button:
+		text: "Create an Account"
+		pos_hint: {"x": 0.2, "y": 0.1}
+		size_hint: 0.6, 0.2
+		on_release: 
+			app.root.current = "create"
+			root.manager.transition.direction = "right"
+
+<CreateAccountWindow>
+	name: "create"
+
+	namee:namee
+	email:email
+	password:password
+
+	FloatLayout:
+
+		Label:
+			text: "Email: "
+			pos_hint: {"x":0.1, "top":0.9}
+			size_hint: 0.4, 0.15
+
+		Label:
+			text: "Name: "
+			pos_hint: {"x":0.1, "top":0.75}
+			size_hint: 0.4, 0.15
+
+		TextInput:
+			id: namee
+			multiline: False
+			pos_hint: {"x": 0.45, "top":0.75}
+			size_hint: 0.4, 0.15
+
+		TextInput:
+			id: email
+			multiline: False
+			pos_hint: {"x": 0.45, "top":0.9}
+			size_hint: 0.4, 0.15
+
+		Label:
+			text: "Password: "
+			pos_hint: {"x": 0.1, "top": 0.7}
+			size_hint:0.35, 0.15
+
+		TextInput:
+			id: password
+			password: True #Hides password as entering
+			pos_hint: {"x": 0.45, "top":0.7}
+			size_hint: 0.4, 0.15
+			multiline: False
+
+		Button:
+			text: "Create an Account"
+			pos_hint: {"x": 0.2, "y": 0.1}
+			size_hint: 0.6, 0.2
+			on_release: root.login()
+
+<SecondWindow>:
+	name: "second"
+
+	Button:
+		size_hint: 0.9,0.33
+		pos_hint: {"x":0.05, "top":1}
+		text: "Lunch Menu"
+		on_release:
+			app.root.current = "lunch_menu"
+			root.manager.transition.direction = "left"
+	Button:
+		size_hint: 0.9,0.33
+		pos_hint: {"x":0.05, "top":0.67}
+		text: "Dinner Menu"
+		on_release:
+			app.root.current = "dinner_menu"
+			root.manager.transition.direction = "left"
+
+	Button:
+		size_hint: 0.9,0.33
+		pos_hint: {"x":0.05, "top":0.34}
+		text: "Go Back"
+		on_release: 
+			app.root.current = "login"
+			root.manager.transition.direction = "right"
+
+<Lunch_Menu>:
+	new_menu_item:new_menu_item
+	label1: label1
+	label2: label2
+	label3: label3
+	label4: label4
+	label5: label5
+	label6: label6
+	label7: label7
+	label8: label8
+
+	name: "lunch_menu"
+
+	Label:
+		text: "Lunch Menu"
+		size_hint: 0.8, 0.2
+		pos_hint: {"x": 0.1, "top":1}
+
+	TextInput:
+		id: new_menu_item
+		size_hint: 0.7, 0.1
+		pos_hint: {"x": 0.1, "top":0.95}
+
+	Button:
+		size_hint: 0.3, 0.1
+		pos_hint: {"x": 0.2, "top":0.8}
+		text: "Add Menu Item"
+		on_release: root.change_text()
+
+	ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label8
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+	ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label7
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+	ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label6
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+	ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label5
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+	ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label4
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+	ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label3
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+	ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label2
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+    ScatterLayout:
+        size_hint: 0.4, 0.05
+        do_translation_x: False
+        Label:
+        	id:label1
+            size_hint: 1.0, 1
+            text: ""
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+	Button:
+		size_hint: 0.3, 0.05
+		pos_hint: {"x": 0.6, "top":0.2}
+		text: "Return to Menus"
+		on_release: 
+			app.root.current = "second"
+			root.manager.transition.direction = "right"
+
+<Dinner_Menu>:
+	name: "dinner_menu"
+
+	Label:
+		text: "Dinner Menu"
+		size_hint: 0.8, 0.2
+		pos_hint: {"x": 0.1, "top":1}
+
+	Button:
+		size_hint: 0.8, 0.2
+		pos_hint: {"x": 0.1, "top":0.5}
+		text: "Add Menu Item"
+		on_release: root.button()
+
+	Button:
+		size_hint: 0.8, 0.2
+		pos_hint: {"x": 0.1, "top":0.3}
+		text: "Return to Menus"
+		on_release: 
+			app.root.current = "second"
+			root.manager.transition.direction = "right"
